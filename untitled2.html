@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TECH MASTER | Official Site</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; transition: 0.3s; }
+        
+        body {
+            background: #0a0a0c;
+            color: #ffffff;
+            font-family: 'Segoe UI', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Навигация (Меню) */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px;
+            background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        nav a {
+            color: #888;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        nav a.active { color: #007aff; text-shadow: 0 0 10px #007aff; }
+
+        /* Контейнер для разделов */
+        .section {
+            display: none; /* Прячем все разделы по умолчанию */
+            padding: 100px 20px 40px;
+            min-height: 100vh;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active { display: block; } /* Показываем только активный */
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 { font-size: 40px; margin-bottom: 20px; background: linear-gradient(90deg, #fff, #444); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        /* Карточки проектов */
+        .project-card {
+            background: #161618;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .project-card:hover { border-color: #007aff; transform: scale(1.02); }
+
+        .badge {
+            background: #007aff;
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn-main {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            background: #fff;
+            color: #000;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="main-nav">
+        <a href="#" onclick="showSection('home')" id="link-home" class="active">Главная</a>
+        <a href="#" onclick="showSection('projects')" id="link-projects">Проекты</a>
+        <a href="#" onclick="showSection('contact')" id="link-contact">Связь</a>
+    </nav>
+
+    <div id="home" class="section active">
+        <h1>Tech Explorer</h1>
+        <p>Добро пожаловать в мой цифровой штаб. Я занимаюсь техникой, программами и создаю контент для Xiaomi сообщества.</p>
+        <div class="project-card">
+            <p>🔋 <b>Текущий девайс:</b> Xiaomi Mi 10T Pro (Apollo)</p>
+            <p>⚙️ <b>Система:</b> Evolution X (Custom ROM)</p>
+        </div>
+        <a href="#" onclick="showSection('projects')" class="btn-main">Посмотреть мои работы</a>
+    </div>
+
+    <div id="projects" class="section">
+        <h1>Мои достижения</h1>
+        
+        <div class="project-card">
+            <span class="badge">YouTube</span>
+            <h3>Канал про IT и Xiaomi</h3>
+            <p>Достиг отметки более 1000 просмотров на видео! Создаю туториалы по кастомизации и ретро-технике.</p>
+        </div>
+
+        <div class="project-card">
+            <span class="badge">Development</span>
+            <h3>Собственный сайт-терминал</h3>
+            <p>Разработка интерфейса на HTML/CSS для управления системой и обхода блокировок.</p>
+        </div>
+    </div>
+
+        <div id="contact" class="section">
+        <h1>Связаться со мной</h1>
+        <p>Я всегда открыт для предложений по сотрудничеству и обсуждения IT-новостей.</p>
+        
+        <div class="project-card">
+            <h3 style="color: #007aff;">📩 Электронная почта</h3>
+            <p>Пишите по любым вопросам:</p>
+            <a href="mailto:EskendirTV1@gmail.com" style="color: #fff; text-decoration: underline; font-size: 18px; font-weight: bold;">
+                EskendirTV1@gmail.com
+            </a>
+        </div>
+
+        <div class="project-card">
+            <h3 style="color: #00ff96;">📺 Мои Соцсети</h3>
+            <p>🎬 <b>YouTube:</b> Eskendir TV (1000+ просмотров)</p>
+            <p>📱 <b>TikTok:</b> Xiaomi IT блог</p>
+        </div>
+
+        <div class="project-card" style="border-color: #444;">
+            <p style="font-size: 14px; color: #888;">
+                📍 <b>Локация:</b> Казахстан, Алматы<br>
+                🔧 <b>Специализация:</b> Xiaomi / Evolution X / Root
+            </p>
+        </div>
+
+        <p style="color: #333; margin-top: 50px; font-size: 11px;">© 2026 Eskendir TV. Все права защищены.</p>
+    </div>
+
+        </div>
+        <p style="color: #444; margin-top: 50px;">© 2026. Сделано профессиональным разработчиком.</p>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // 1. Прячем все секции
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(s => s.classList.remove('active'));
+
+            // 2. Убираем активный цвет у ссылок
+            const links = document.querySelectorAll('nav a');
+            links.forEach(l => l.classList.remove('active'));
+
+            // 3. Показываем нужную секцию и красим ссылку
+            document.getElementById(sectionId).classList.add('active');
+            document.getElementById('link-' + sectionId).classList.add('active');
+            
+            // Прокрутка вверх
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
